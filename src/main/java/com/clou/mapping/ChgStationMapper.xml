@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.clou.dao.ChgStationMapper">
+<resultMap type="com.clou.model.ChgStation" id="baseResultMap">
+ <result column="id" property="id" jdbcType="VARCHAR" />
+ <result column="station_name" property="name" jdbcType="VARCHAR"/>
+</resultMap>
+<select id="getStationName" resultMap="baseResultMap">
+set @counter=0;
+select @counter:=@counter+1 as id,station_name from chg_station
+</select>
+</mapper>

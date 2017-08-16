@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.clou.dao.BillMapper" >
+  <resultMap id="BaseResultMap" type="com.clou.model.Bill" >
+    <result column="BILL_PAY_ID" property="billPayId" jdbcType="INTEGER" />
+    <result column="BILL_PAY_NO" property="billPayNo" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="VARCHAR" />
+    <result column="END_TIME" property="endTime" jdbcType="VARCHAR" />
+    <result column="PILE_ID" property="pileId" jdbcType="INTEGER" />
+    <result column="INNER_ID" property="innerId" jdbcType="INTEGER" />
+    <result column="START_TYPE" property="startType" jdbcType="VARCHAR" />
+    <result column="PRE_AMOUNT" property="preAmount" jdbcType="DECIMAL" />
+    <result column="AMOUNT" property="amount" jdbcType="DECIMAL" />
+    <result column="CHG_POWER" property="chgPower" jdbcType="DECIMAL" />
+    <result column="ELCE_FEE" property="elceFee" jdbcType="DECIMAL" />
+    <result column="SERV_FEE" property="servFee" jdbcType="DECIMAL" />
+    <result column="PARK_FEE" property="parkFee" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="FINISH_TIME" property="finishTime" jdbcType="VARCHAR" />
+    <result column="PAY_STATE" property="payState" jdbcType="VARCHAR" />
+    <result column="CHECK_STATE" property="checkState" jdbcType="VARCHAR" />
+    <result column="BILL_DESC" property="billDesc" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="CONS_ID" property="consId" jdbcType="INTEGER" />
+    <result column="IS_STOP" property="isStop" jdbcType="VARCHAR" />
+    <result column="SETTLE_TIMES" property="settleTimes" jdbcType="INTEGER" />
+    <result column="PAY_TYPE" property="payType" jdbcType="VARCHAR" />
+    <result column="PREPAY_ID" property="prepayId" jdbcType="VARCHAR" />
+    <result column="OUT_BILL_NO" property="outBillNo" jdbcType="VARCHAR" />
+    <result column="POWER_ZXYG1" property="powerZxyg1" jdbcType="DECIMAL" />
+    <result column="POWER_ZXYG2" property="powerZxyg2" jdbcType="DECIMAL" />
+    <result column="POWER_ZXYG3" property="powerZxyg3" jdbcType="DECIMAL" />
+    <result column="POWER_ZXYG4" property="powerZxyg4" jdbcType="DECIMAL" />
+    <result column="PRC_ZXYGZ1" property="prcZxygz1" jdbcType="DECIMAL" />
+    <result column="PRC_ZXYGZ2" property="prcZxygz2" jdbcType="DECIMAL" />
+    <result column="PRC_ZXYGZ3" property="prcZxygz3" jdbcType="DECIMAL" />
+    <result column="PRC_ZXYGZ4" property="prcZxygz4" jdbcType="DECIMAL" />
+    <result column="SERV_PRICE" property="servPrice" jdbcType="DECIMAL" />
+    <result column="CAR_ID" property="carId" jdbcType="INTEGER" />
+    <result column="COUPON_ID" property="couponId" jdbcType="BIGINT" />
+    <result column="MINUTES" property="minutes" jdbcType="INTEGER" />
+    <result column="ORDER_STATUS" property="orderStatus" jdbcType="INTEGER" />
+    <result column="DISCOUNT_FEE" property="discountFee" jdbcType="DOUBLE" />
+    <result column="FIG" property="fig" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BILL_PAY_ID, BILL_PAY_NO, START_TIME, END_TIME, PILE_ID, INNER_ID, START_TYPE, PRE_AMOUNT, 
+    AMOUNT, CHG_POWER, ELCE_FEE, SERV_FEE, PARK_FEE, CREATE_TIME, FINISH_TIME, PAY_STATE, 
+    CHECK_STATE, BILL_DESC, ORG_ID, CONS_ID, IS_STOP, SETTLE_TIMES, PAY_TYPE, PREPAY_ID, 
+    OUT_BILL_NO, POWER_ZXYG1, POWER_ZXYG2, POWER_ZXYG3, POWER_ZXYG4, PRC_ZXYGZ1, PRC_ZXYGZ2, 
+    PRC_ZXYGZ3, PRC_ZXYGZ4, SERV_PRICE, CAR_ID, COUPON_ID, MINUTES, ORDER_STATUS, DISCOUNT_FEE, 
+    FIG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bill_pay
+    where BILL_PAY_ID = #{billPayId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bill_pay
+    where BILL_PAY_ID = #{billPayId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.clou.model.Bill" >
+    insert into bill_pay (BILL_PAY_ID, BILL_PAY_NO, START_TIME, 
+      END_TIME, PILE_ID, INNER_ID, 
+      START_TYPE, PRE_AMOUNT, AMOUNT, 
+      CHG_POWER, ELCE_FEE, SERV_FEE, 
+      PARK_FEE, CREATE_TIME, FINISH_TIME, 
+      PAY_STATE, CHECK_STATE, BILL_DESC, 
+      ORG_ID, CONS_ID, IS_STOP, 
+      SETTLE_TIMES, PAY_TYPE, PREPAY_ID, 
+      OUT_BILL_NO, POWER_ZXYG1, POWER_ZXYG2, 
+      POWER_ZXYG3, POWER_ZXYG4, PRC_ZXYGZ1, 
+      PRC_ZXYGZ2, PRC_ZXYGZ3, PRC_ZXYGZ4, 
+      SERV_PRICE, CAR_ID, COUPON_ID, 
+      MINUTES, ORDER_STATUS, DISCOUNT_FEE, 
+      FIG)
+    values (#{billPayId,jdbcType=INTEGER}, #{billPayNo,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{pileId,jdbcType=INTEGER}, #{innerId,jdbcType=INTEGER}, 
+      #{startType,jdbcType=VARCHAR}, #{preAmount,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL}, 
+      #{chgPower,jdbcType=DECIMAL}, #{elceFee,jdbcType=DECIMAL}, #{servFee,jdbcType=DECIMAL}, 
+      #{parkFee,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{finishTime,jdbcType=TIMESTAMP}, 
+      #{payState,jdbcType=VARCHAR}, #{checkState,jdbcType=VARCHAR}, #{billDesc,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=INTEGER}, #{consId,jdbcType=INTEGER}, #{isStop,jdbcType=VARCHAR}, 
+      #{settleTimes,jdbcType=INTEGER}, #{payType,jdbcType=VARCHAR}, #{prepayId,jdbcType=VARCHAR}, 
+      #{outBillNo,jdbcType=VARCHAR}, #{powerZxyg1,jdbcType=DECIMAL}, #{powerZxyg2,jdbcType=DECIMAL}, 
+      #{powerZxyg3,jdbcType=DECIMAL}, #{powerZxyg4,jdbcType=DECIMAL}, #{prcZxygz1,jdbcType=DECIMAL}, 
+      #{prcZxygz2,jdbcType=DECIMAL}, #{prcZxygz3,jdbcType=DECIMAL}, #{prcZxygz4,jdbcType=DECIMAL}, 
+      #{servPrice,jdbcType=DECIMAL}, #{carId,jdbcType=INTEGER}, #{couponId,jdbcType=BIGINT}, 
+      #{minutes,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, #{discountFee,jdbcType=DOUBLE}, 
+      #{fig,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.clou.model.Bill" >
+    insert into bill_pay
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="billPayId != null" >
+        BILL_PAY_ID,
+      </if>
+      <if test="billPayNo != null" >
+        BILL_PAY_NO,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="pileId != null" >
+        PILE_ID,
+      </if>
+      <if test="innerId != null" >
+        INNER_ID,
+      </if>
+      <if test="startType != null" >
+        START_TYPE,
+      </if>
+      <if test="preAmount != null" >
+        PRE_AMOUNT,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="chgPower != null" >
+        CHG_POWER,
+      </if>
+      <if test="elceFee != null" >
+        ELCE_FEE,
+      </if>
+      <if test="servFee != null" >
+        SERV_FEE,
+      </if>
+      <if test="parkFee != null" >
+        PARK_FEE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME,
+      </if>
+      <if test="payState != null" >
+        PAY_STATE,
+      </if>
+      <if test="checkState != null" >
+        CHECK_STATE,
+      </if>
+      <if test="billDesc != null" >
+        BILL_DESC,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="consId != null" >
+        CONS_ID,
+      </if>
+      <if test="isStop != null" >
+        IS_STOP,
+      </if>
+      <if test="settleTimes != null" >
+        SETTLE_TIMES,
+      </if>
+      <if test="payType != null" >
+        PAY_TYPE,
+      </if>
+      <if test="prepayId != null" >
+        PREPAY_ID,
+      </if>
+      <if test="outBillNo != null" >
+        OUT_BILL_NO,
+      </if>
+      <if test="powerZxyg1 != null" >
+        POWER_ZXYG1,
+      </if>
+      <if test="powerZxyg2 != null" >
+        POWER_ZXYG2,
+      </if>
+      <if test="powerZxyg3 != null" >
+        POWER_ZXYG3,
+      </if>
+      <if test="powerZxyg4 != null" >
+        POWER_ZXYG4,
+      </if>
+      <if test="prcZxygz1 != null" >
+        PRC_ZXYGZ1,
+      </if>
+      <if test="prcZxygz2 != null" >
+        PRC_ZXYGZ2,
+      </if>
+      <if test="prcZxygz3 != null" >
+        PRC_ZXYGZ3,
+      </if>
+      <if test="prcZxygz4 != null" >
+        PRC_ZXYGZ4,
+      </if>
+      <if test="servPrice != null" >
+        SERV_PRICE,
+      </if>
+      <if test="carId != null" >
+        CAR_ID,
+      </if>
+      <if test="couponId != null" >
+        COUPON_ID,
+      </if>
+      <if test="minutes != null" >
+        MINUTES,
+      </if>
+      <if test="orderStatus != null" >
+        ORDER_STATUS,
+      </if>
+      <if test="discountFee != null" >
+        DISCOUNT_FEE,
+      </if>
+      <if test="fig != null" >
+        FIG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="billPayId != null" >
+        #{billPayId,jdbcType=INTEGER},
+      </if>
+      <if test="billPayNo != null" >
+        #{billPayNo,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pileId != null" >
+        #{pileId,jdbcType=INTEGER},
+      </if>
+      <if test="innerId != null" >
+        #{innerId,jdbcType=INTEGER},
+      </if>
+      <if test="startType != null" >
+        #{startType,jdbcType=VARCHAR},
+      </if>
+      <if test="preAmount != null" >
+        #{preAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="chgPower != null" >
+        #{chgPower,jdbcType=DECIMAL},
+      </if>
+      <if test="elceFee != null" >
+        #{elceFee,jdbcType=DECIMAL},
+      </if>
+      <if test="servFee != null" >
+        #{servFee,jdbcType=DECIMAL},
+      </if>
+      <if test="parkFee != null" >
+        #{parkFee,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null" >
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payState != null" >
+        #{payState,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null" >
+        #{checkState,jdbcType=VARCHAR},
+      </if>
+      <if test="billDesc != null" >
+        #{billDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="consId != null" >
+        #{consId,jdbcType=INTEGER},
+      </if>
+      <if test="isStop != null" >
+        #{isStop,jdbcType=VARCHAR},
+      </if>
+      <if test="settleTimes != null" >
+        #{settleTimes,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="prepayId != null" >
+        #{prepayId,jdbcType=VARCHAR},
+      </if>
+      <if test="outBillNo != null" >
+        #{outBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="powerZxyg1 != null" >
+        #{powerZxyg1,jdbcType=DECIMAL},
+      </if>
+      <if test="powerZxyg2 != null" >
+        #{powerZxyg2,jdbcType=DECIMAL},
+      </if>
+      <if test="powerZxyg3 != null" >
+        #{powerZxyg3,jdbcType=DECIMAL},
+      </if>
+      <if test="powerZxyg4 != null" >
+        #{powerZxyg4,jdbcType=DECIMAL},
+      </if>
+      <if test="prcZxygz1 != null" >
+        #{prcZxygz1,jdbcType=DECIMAL},
+      </if>
+      <if test="prcZxygz2 != null" >
+        #{prcZxygz2,jdbcType=DECIMAL},
+      </if>
+      <if test="prcZxygz3 != null" >
+        #{prcZxygz3,jdbcType=DECIMAL},
+      </if>
+      <if test="prcZxygz4 != null" >
+        #{prcZxygz4,jdbcType=DECIMAL},
+      </if>
+      <if test="servPrice != null" >
+        #{servPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null" >
+        #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="minutes != null" >
+        #{minutes,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="discountFee != null" >
+        #{discountFee,jdbcType=DOUBLE},
+      </if>
+      <if test="fig != null" >
+        #{fig,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.clou.model.Bill" >
+    update bill_pay
+    <set >
+      <if test="billPayNo != null" >
+        BILL_PAY_NO = #{billPayNo,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pileId != null" >
+        PILE_ID = #{pileId,jdbcType=INTEGER},
+      </if>
+      <if test="innerId != null" >
+        INNER_ID = #{innerId,jdbcType=INTEGER},
+      </if>
+      <if test="startType != null" >
+        START_TYPE = #{startType,jdbcType=VARCHAR},
+      </if>
+      <if test="preAmount != null" >
+        PRE_AMOUNT = #{preAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="chgPower != null" >
+        CHG_POWER = #{chgPower,jdbcType=DECIMAL},
+      </if>
+      <if test="elceFee != null" >
+        ELCE_FEE = #{elceFee,jdbcType=DECIMAL},
+      </if>
+      <if test="servFee != null" >
+        SERV_FEE = #{servFee,jdbcType=DECIMAL},
+      </if>
+      <if test="parkFee != null" >
+        PARK_FEE = #{parkFee,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payState != null" >
+        PAY_STATE = #{payState,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null" >
+        CHECK_STATE = #{checkState,jdbcType=VARCHAR},
+      </if>
+      <if test="billDesc != null" >
+        BILL_DESC = #{billDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="consId != null" >
+        CONS_ID = #{consId,jdbcType=INTEGER},
+      </if>
+      <if test="isStop != null" >
+        IS_STOP = #{isStop,jdbcType=VARCHAR},
+      </if>
+      <if test="settleTimes != null" >
+        SETTLE_TIMES = #{settleTimes,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="prepayId != null" >
+        PREPAY_ID = #{prepayId,jdbcType=VARCHAR},
+      </if>
+      <if test="outBillNo != null" >
+        OUT_BILL_NO = #{outBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="powerZxyg1 != null" >
+        POWER_ZXYG1 = #{powerZxyg1,jdbcType=DECIMAL},
+      </if>
+      <if test="powerZxyg2 != null" >
+        POWER_ZXYG2 = #{powerZxyg2,jdbcType=DECIMAL},
+      </if>
+      <if test="powerZxyg3 != null" >
+        POWER_ZXYG3 = #{powerZxyg3,jdbcType=DECIMAL},
+      </if>
+      <if test="powerZxyg4 != null" >
+        POWER_ZXYG4 = #{powerZxyg4,jdbcType=DECIMAL},
+      </if>
+      <if test="prcZxygz1 != null" >
+        PRC_ZXYGZ1 = #{prcZxygz1,jdbcType=DECIMAL},
+      </if>
+      <if test="prcZxygz2 != null" >
+        PRC_ZXYGZ2 = #{prcZxygz2,jdbcType=DECIMAL},
+      </if>
+      <if test="prcZxygz3 != null" >
+        PRC_ZXYGZ3 = #{prcZxygz3,jdbcType=DECIMAL},
+      </if>
+      <if test="prcZxygz4 != null" >
+        PRC_ZXYGZ4 = #{prcZxygz4,jdbcType=DECIMAL},
+      </if>
+      <if test="servPrice != null" >
+        SERV_PRICE = #{servPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="carId != null" >
+        CAR_ID = #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null" >
+        COUPON_ID = #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="minutes != null" >
+        MINUTES = #{minutes,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        ORDER_STATUS = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="discountFee != null" >
+        DISCOUNT_FEE = #{discountFee,jdbcType=DOUBLE},
+      </if>
+      <if test="fig != null" >
+        FIG = #{fig,jdbcType=INTEGER},
+      </if>
+    </set>
+    where BILL_PAY_ID = #{billPayId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.clou.model.Bill" >
+    update bill_pay
+    set BILL_PAY_NO = #{billPayNo,jdbcType=VARCHAR},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      PILE_ID = #{pileId,jdbcType=INTEGER},
+      INNER_ID = #{innerId,jdbcType=INTEGER},
+      START_TYPE = #{startType,jdbcType=VARCHAR},
+      PRE_AMOUNT = #{preAmount,jdbcType=DECIMAL},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      CHG_POWER = #{chgPower,jdbcType=DECIMAL},
+      ELCE_FEE = #{elceFee,jdbcType=DECIMAL},
+      SERV_FEE = #{servFee,jdbcType=DECIMAL},
+      PARK_FEE = #{parkFee,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      FINISH_TIME = #{finishTime,jdbcType=TIMESTAMP},
+      PAY_STATE = #{payState,jdbcType=VARCHAR},
+      CHECK_STATE = #{checkState,jdbcType=VARCHAR},
+      BILL_DESC = #{billDesc,jdbcType=VARCHAR},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      CONS_ID = #{consId,jdbcType=INTEGER},
+      IS_STOP = #{isStop,jdbcType=VARCHAR},
+      SETTLE_TIMES = #{settleTimes,jdbcType=INTEGER},
+      PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      PREPAY_ID = #{prepayId,jdbcType=VARCHAR},
+      OUT_BILL_NO = #{outBillNo,jdbcType=VARCHAR},
+      POWER_ZXYG1 = #{powerZxyg1,jdbcType=DECIMAL},
+      POWER_ZXYG2 = #{powerZxyg2,jdbcType=DECIMAL},
+      POWER_ZXYG3 = #{powerZxyg3,jdbcType=DECIMAL},
+      POWER_ZXYG4 = #{powerZxyg4,jdbcType=DECIMAL},
+      PRC_ZXYGZ1 = #{prcZxygz1,jdbcType=DECIMAL},
+      PRC_ZXYGZ2 = #{prcZxygz2,jdbcType=DECIMAL},
+      PRC_ZXYGZ3 = #{prcZxygz3,jdbcType=DECIMAL},
+      PRC_ZXYGZ4 = #{prcZxygz4,jdbcType=DECIMAL},
+      SERV_PRICE = #{servPrice,jdbcType=DECIMAL},
+      CAR_ID = #{carId,jdbcType=INTEGER},
+      COUPON_ID = #{couponId,jdbcType=BIGINT},
+      MINUTES = #{minutes,jdbcType=INTEGER},
+      ORDER_STATUS = #{orderStatus,jdbcType=INTEGER},
+      DISCOUNT_FEE = #{discountFee,jdbcType=DOUBLE},
+      FIG = #{fig,jdbcType=INTEGER}
+    where BILL_PAY_ID = #{billPayId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <!-- 非自动生成，我自己写的 查询bill_pay表中的所有信息-->
+  
+  <select id="getList" resultMap="BaseResultMap" >
+  select * from bill_pay
+  </select>
+  
+  <!-- 根据创建时间和充电场站查询bill_pay表中的数据 -->
+  <select id="getByTimeAndName" parameterType="Map" resultMap="BaseResultMap" >
+ select a.* from bill_pay a,chg_pile b,chg_station c 
+ where a.create_time like '%${time}%' 
+ and a.pile_id=b.pile_id 
+ and b.station_id=c.station_id 
+ and c.station_name='${stationName}'
+ order by BILL_PAY_ID
+  </select>
+  <!-- 仅仅根据创建时间查询bill_pay表中的数据 -->
+  <select id="getByTime" parameterType="String" resultMap="BaseResultMap">
+  select * from bill_pay 
+  where create_time like '%${_parameter}%'
+  order by BILL_PAY_ID
+  </select>
+  
+  <!-- 仅仅根据充电场站查询bill_pay表中的数据 -->
+  <select id="getByName" parameterType="String" resultMap="BaseResultMap">
+  select a.* from bill_pay a,chg_pile b,chg_station c
+  where a.pile_id=b.pile_id
+  and b.station_id=c.station_id
+  and c.station_name='${_parameter}'
+  order by BILL_PAY_ID
+  </select>
+</mapper>
